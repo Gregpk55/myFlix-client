@@ -6,7 +6,7 @@ The frontend of the project "myFlix".
 
 <h2>Technology Used</h2>
 
-*Parcel
-*React
+* Parcel
+* React
 
 https://github.com/Gregpk55/myFlix-client
