@@ -1,30 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+
 
 
 export const MainView = () => {
     const [movies, setMovies] = useState([]);
 
-    const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
-        fetch("https://git.heroku.com/greg-kennedy-myflix.git")
-        .then((response) => response.json())
-        .then((data) => {
-            const moviesFromApi = data.docs.map((doc) => {
+        fetch("https://greg-kennedy-myflix.herokuapp.com/movies")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.docs) { // Check if data.docs is defined
+              const moviesFromApi = data.docs.map((doc) => {
                 return {
-                    id: doc.key,
-                    title: doc.title,
-                    image: "https://git.heroku.com/greg-kennedy-myflix.git/api/images${doc.cover_i}",
-                    director: doc.director_name?.[0],
-                    genre: doc.genre
+                  id: doc.key,
+                  title: doc.title,
+                  image: `https://git.heroku.com/greg-kennedy-myflix.git/api/images${doc.cover_i}`,
+                  director: doc.director_name?.[0],
+                  
                 };
-            });
+              });
+      
+              setMovies(moviesFromApi);
+            }
+          });
+      }, []);
 
-            setMovies(moviesFromApi);
-        });
-    }, []);
+      const [selectedMovie, setSelectedMovie] = useState(null);
 
     if (selectedMovie) {
         return (
