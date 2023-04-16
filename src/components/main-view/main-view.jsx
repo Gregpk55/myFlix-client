@@ -16,7 +16,7 @@ export const MainView = () => {
                 return {
                     id: doc.key,
                     title: doc.title,
-                    image: doc.image,
+                    image: "https://git.heroku.com/greg-kennedy-myflix.git/api/images${doc.cover_i}",
                     director: doc.director_name?.[0],
                     genre: doc.genre
                 };
