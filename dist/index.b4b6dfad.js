@@ -27163,10 +27163,12 @@ const MainView = ()=>{
             if (data.docs) {
                 const moviesFromApi = data.docs.map((doc)=>{
                     return {
-                        id: doc.key,
-                        title: doc.title,
-                        image: `https://git.heroku.com/greg-kennedy-myflix.git/api/images${doc.cover_i}`,
-                        director: doc.director_name?.[0]
+                        id: movies._id,
+                        title: movies.Title,
+                        image: movies.ImagePath,
+                        description: movies.Description,
+                        genre: movies.Genre.Name,
+                        director: movies.Director.Name
                     };
                 });
                 setMovies(moviesFromApi);
@@ -27179,14 +27181,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 35,
+        lineNumber: 36,
         columnNumber: 9
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 40,
+        lineNumber: 41,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27197,12 +27199,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 46,
+                lineNumber: 47,
                 columnNumber: 17
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 44,
+        lineNumber: 45,
         columnNumber: 9
     }, undefined);
 };

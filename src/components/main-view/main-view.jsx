@@ -13,15 +13,16 @@ export const MainView = () => {
           .then((response) => response.json())
           .then((data) => {
             if (data.docs) { // Check if data.docs is defined
-              const moviesFromApi = data.docs.map((doc) => {
-                return {
-                  id: doc.key,
-                  title: doc.title,
-                  image: `https://git.heroku.com/greg-kennedy-myflix.git/api/images${doc.cover_i}`,
-                  director: doc.director_name?.[0],
-                  
-                };
-              });
+                const moviesFromApi = data.docs.map((doc) => {
+                    return {
+                      id: movies._id,
+                      title: movies.Title,
+                      image: movies.ImagePath,
+                      description: movies.Description,
+                      genre: movies.Genre.Name,
+                      director: movies.Director.Name,
+                    };
+                  });
       
               setMovies(moviesFromApi);
             }
