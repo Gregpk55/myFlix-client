@@ -12,7 +12,7 @@ export const MainView = () => {
         fetch("https://greg-kennedy-myflix.herokuapp.com/movies")
           .then((response) => response.json())
           .then((data) => {
-            if (data.docs) { // Check if data.docs is defined
+            if (data) { // Check if data.docs is defined
                 const moviesFromApi = data.map((doc) => {
                     return {
                       id: doc._id,

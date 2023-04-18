@@ -27160,7 +27160,7 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
         fetch("https://greg-kennedy-myflix.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
-            if (data.docs) {
+            if (data) {
                 const moviesFromApi = data.map((doc)=>{
                     return {
                         id: doc._id,
