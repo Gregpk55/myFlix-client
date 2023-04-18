@@ -13,14 +13,13 @@ export const MainView = () => {
           .then((response) => response.json())
           .then((data) => {
             if (data.docs) { // Check if data.docs is defined
-                const moviesFromApi = data.docs.map((doc) => {
+                const moviesFromApi = data.map((doc) => {
                     return {
-                      id: movies._id,
-                      title: movies.Title,
-                      image: movies.ImagePath,
-                      description: movies.Description,
-                      genre: movies.Genre.Name,
-                      director: movies.Director.Name,
+                      id: doc._id,
+                      title: doc.Title,
+                      image: doc.ImagePath,
+                      director: doc.Director.Name,
+                      genre: doc.Genre.Name,
                     };
                   });
       
