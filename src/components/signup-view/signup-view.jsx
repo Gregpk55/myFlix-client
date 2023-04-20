@@ -15,8 +15,8 @@ export const SignupView = () => {
       Email: email,
       Birthday: birthday
     };
-    //'https://greg-kennedy-myflix.herokuapp.com/users'
-    fetch("SIGNUP_URL", {
+    
+    fetch('https://greg-kennedy-myflix.herokuapp.com/users', {
       method: "POST",
       body: JSON.stringify(data),
       headers: {

@@ -19,10 +19,11 @@ export const MainView = () => {
         return;
     }
     fetch('https://greg-kennedy-myflix.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: {Authorization: `Bearer ${token}`}
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log('data, data');
         const moviesFromApi = data.map((doc) => {
           return {
             id: doc._id,
@@ -66,7 +67,7 @@ export const MainView = () => {
       </>
     );
   }
-
+//empty movies
   if (movies.length === 0) {
     return (
       <>
