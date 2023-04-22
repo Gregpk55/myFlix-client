@@ -24,19 +24,19 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log('data, data');
-        const moviesFromApi = data.map((doc) => {
+        const moviesFromApi = data.map((movie) => {
           return {
-            id: doc._id,
-            title: doc.Title,
-            image: doc.ImagePath,
-            director: doc.Director.Name,
-            genre: doc.Genre.Name,
-          };
+            id: movie._id,
+            title: movie.Title,
+            image: movie.ImagePath,
+            director: movie.Director.Name,
+            genre: movie.Genre.Name,
+          }
         });
 
         setMovies(moviesFromApi);
-      });
-  }, [token]);
+      })
+  }, [token])
   
 
   if (!user) {
