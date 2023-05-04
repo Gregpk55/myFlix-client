@@ -27323,72 +27323,7 @@ const MainView = ()=>{
         lineNumber: 45,
         columnNumber: 5
     }, undefined);
-}; //   return (
- //     <div>
- //       <Row className="justify-content-md-center">
- //         {!user ? (
- //           <Col md={5}>
- //             <LoginView
- //               onLoggedIn={(user, token) => {
- //                 setUser(user);
- //                 setToken(token);
- //               }}
- //             />
- //             <SignupView />
- //           </Col>
- //         ) : selectedMovie ? (
- //           <Col
- //             md={8}
- //             style={{ border: '3px solid black' }}
- //           >
- //             <MovieView
- //               movie={selectedMovie}
- //               onBackClick={() => setSelectedMovie(null)}
- //             />
- //           </Col>
- //         ) : (
- //           <>
- //             {movies.length === 0 ? (
- //               <p>The list is empty!</p>
- //             ) : (
- //               <>
- //                 {movies.map((movie) => (
- //                   <Col
- //                     key={movie._id}
- //                     md={3}
- //                   >
- //                     <MovieCard
- //                       movie={movie}
- //                       onMovieClick={(newSelectedMovie) => {
- //                         setSelectedMovie(newSelectedMovie);
- //                       }}
- //                     />
- //                   </Col>
- //                 ))}
- //               </>
- //             )}
- //           </>
- //         )}
- //       </Row>
- //       {user && (
- //         <Row className="justify-content-md-center mt-5">
- //           <Col md={5}>
- //             <Button
- //               outline="black"
- //               onClick={() => {
- //                 setUser(null);
- //                 setToken(null);
- //                 localStorage.clear();
- //               }}
- //             >
- //               Logout
- //             </Button>
- //           </Col>
- //         </Row>
- //       )}
- //     </div>
- //   );
- // };
+};
 _s(MainView, "9wJBvfUyU2IigbyWC+M5y3EH9h4=");
 _c = MainView;
 var _c;
