@@ -1,38 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
+import './movie-card.scss';
 
-export const MovieCard = ({ movie, onMovieClick }) => {
+import { Link } from 'react-router-dom';
+
+export const MovieCard = ({ movie }) => {
   return (
-    <Card
-      className="h-100 mb-4"
-      onClick={() => onMovieClick(movie)}
-      style={{ cursor: 'pointer' }}
-    >
-      <Card.Img
-        src={movie.image}
-        style={{ maxWidth: '500px', maxHeight: '300px', display: 'block', margin: 'auto' }}
-      />
-
-      <Card.Body
-        style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+    <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
+      <Card
+        className="h-100 mb-4"
+        style={{ cursor: 'pointer' }}
       >
-        <div>
-          <Card.Title>Title: {movie.title}</Card.Title>
-          <Card.Text>Genre: {movie.genre}</Card.Text>
-          <Card.Text>Director: {movie.director}</Card.Text>
-        </div>
+        <Card.Img
+          src={movie.image}
+          style={{ maxWidth: '500px', maxHeight: '300px', display: 'block', margin: 'auto' }}
+        />
 
-        <Button
-          onClick={() => onMovieClick(movie)}
-          variant="primary"
-          className="mx-auto my-3"
-          style={{ width: '100px' }}
+        <Card.Body
+          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
         >
-          Open
-        </Button>
-      </Card.Body>
-    </Card>
+          <div>
+            <Card.Title>Title: {movie.title}</Card.Title>
+            <Card.Text>Genre: {movie.genre}</Card.Text>
+            <Card.Text>Director: {movie.director}</Card.Text>
+          </div>
+
+          <Button
+            variant="link"
+            className="mx-auto my-3"
+            style={{ width: '100px', cursor: 'pointer' }}
+          >
+            Open
+          </Button>
+        </Card.Body>
+      </Card>
+    </Link>
   );
 };
 
@@ -44,5 +47,4 @@ MovieCard.propTypes = {
     genre: PropTypes.string,
     description: PropTypes.string.isRequired,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
 };
