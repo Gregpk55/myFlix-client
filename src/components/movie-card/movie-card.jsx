@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card } from 'react-bootstrap';
-import './movie-card.scss';
-
 import { Link } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap';
+import './movie-card.scss';
 
 export const MovieCard = ({ movie }) => {
   return (
@@ -14,11 +13,22 @@ export const MovieCard = ({ movie }) => {
       >
         <Card.Img
           src={movie.image}
-          style={{ maxWidth: '500px', maxHeight: '300px', display: 'block', margin: 'auto' }}
+          style={{
+            maxWidth: '500px',
+            maxHeight: '300px',
+            display: 'block',
+            margin: 'auto',
+            flex: 1,
+          }}
         />
 
         <Card.Body
-          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            flex: 1,
+          }}
         >
           <div>
             <Card.Title>Title: {movie.title}</Card.Title>
@@ -27,7 +37,7 @@ export const MovieCard = ({ movie }) => {
           </div>
 
           <Button
-            variant="link"
+            variant="primary"
             className="mx-auto my-3"
             style={{ width: '100px', cursor: 'pointer' }}
           >
