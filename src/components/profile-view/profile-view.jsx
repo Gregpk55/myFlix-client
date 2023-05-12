@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { json, useParams } from 'react-router-dom';
 import { Card, Col, Form, Button } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -57,7 +57,7 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
       favoriteMovies: favoriteMovieIds,
     };
 
-    fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.username}`, {
+    fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.Username}`, {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
@@ -86,12 +86,13 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
 
   const deleteAccount = () => {
     console.log('delete');
-    fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.username}`, {
+    fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.Username}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((response) => {
-        if (response.ok) {
+      .then((response) => response.json())
+      .then((deletedUser) => {
+        if (deletedUser.ok) {
           alert('Your account has been deleted');
           onLoggedOut();
         } else {
@@ -191,7 +192,7 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
         xs={12}
         className="mt-4"
       >
-        <h2>Favorite Movies</h2>
+        <h2 style={{ color: 'white' }}>Favorite Movies</h2>
         <div className="movie-list">
           {getFavoriteMovies().map((movie) => (
             <MovieCard

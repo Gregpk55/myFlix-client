@@ -14,7 +14,7 @@ export const MovieView = ({ movies }) => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
 
   // Check if the user is logged in and has any favorite movies
-  const initialIsFavorite = user && user.favoriteMovies && user.favoriteMovies.includes(movie.id);
+  const initialIsFavorite = user && user.FavoriteMovies?.includes(movie.id);
 
   // Use the initialIsFavorite value as the initial state value for setIsFavorite
   const [isFavorite, setIsFavorite] = useState(initialIsFavorite);
@@ -25,13 +25,14 @@ export const MovieView = ({ movies }) => {
   }, [initialIsFavorite]);
 
   const addFavorite = () => {
-    fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.username}/movies/${movieId}`, {
+    fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((updatedUser) => {
-        if (updatedUser.favoriteMovies && updatedUser.favoriteMovies.includes(movieId)) {
+        //if (updatedUser.favoriteMovies && updatedUser.favoriteMovies.includes(movieId)) {
+        if (updatedUser.FavoriteMovies?.includes(movieId)) {
           alert(`Successfully added ${movie.title} to favorites`);
           setIsFavorite(true);
           localStorage.setItem('user', JSON.stringify(updatedUser));
@@ -45,18 +46,11 @@ export const MovieView = ({ movies }) => {
   };
 
   const deleteFavorite = () => {
-    fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.username}/movies/${movieId}`, {
+    fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.Username}/movies/${movieId}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          alert('Failed');
-          return false;
-        }
-      })
+      .then((response) => response.json())
       .then((updatedUser) => {
         if (updatedUser) {
           alert(`Successfully removed ${movie.title} from favorites`);
