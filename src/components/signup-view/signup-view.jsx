@@ -11,11 +11,13 @@ export const SignupView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const formattedBirthday = new Date(birthday).toDateString();
+
     const data = {
       Username: username,
       Password: password,
       Email: email,
-      Birthday: birthday,
+      Birthday: formattedBirthday,
     };
 
     fetch('https://greg-kennedy-myflix.herokuapp.com/users', {
@@ -33,6 +35,14 @@ export const SignupView = () => {
       }
     });
   };
+  const formatBirthday = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = `${date.getMonth() + 1}`.padStart(2, '0');
+    const day = `${date.getDate()}`.padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="forUsername">
@@ -70,7 +80,7 @@ export const SignupView = () => {
         <Form.Label style={{ color: 'white' }}>Birthday</Form.Label>
         <Form.Control
           type="date"
-          value={birthday}
+          value={formatBirthday(birthday)}
           onChange={(e) => setBirthday(e.target.value)}
         />
       </Form.Group>
