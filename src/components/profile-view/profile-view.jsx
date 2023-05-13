@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { json, useParams } from 'react-router-dom';
+import { json, useParams, Link } from 'react-router-dom';
 import { Card, Col, Form, Button } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
-import { favoriteMovies } from './favourite-movies';
+import '../main-view/main-view.scss';
 
-export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
+export const ProfileView = ({ user, movies, onLoggedOut, updateUser, props }) => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const { movieId } = useParams();
 
@@ -85,16 +84,14 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
   };
 
   const deleteAccount = () => {
-    console.log('delete');
     fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.Username}`, {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((deletedUser) => {
-        if (deletedUser.ok) {
-          alert('Your account has been deleted');
-          onLoggedOut();
+        if (deletedUser) {
+          alert(`Successfully deleted ${user.Username}`);
         } else {
           alert('Could not delete account');
         }
@@ -181,7 +178,13 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
                 variant="danger"
                 onClick={deleteAccount}
               >
-                Delete Account
+                <Link
+                  onClick={onLoggedOut}
+                  to="/signup"
+                  style={{ color: 'white' }}
+                >
+                  Delete Account
+                </Link>
               </Button>
             </Form>
           </Card.Body>

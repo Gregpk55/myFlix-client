@@ -14,8 +14,8 @@ export const MovieCard = ({ movie }) => {
         <Card.Img
           src={movie.image}
           style={{
-            maxWidth: '500px',
-            maxHeight: '300px',
+            maxWidth: 'auto',
+            maxHeight: '500px',
             display: 'block',
             margin: 'auto',
             flex: 1,
