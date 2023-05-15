@@ -11,8 +11,6 @@ export const SignupView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    //const formattedBirthday = new Date(birthday).toDateString();
-
     const data = {
       Username: username,
       Password: password,
@@ -35,13 +33,6 @@ export const SignupView = () => {
       }
     });
   };
-  // const formatBirthday = (dateString) => {
-  //   const date = new Date(dateString);
-  //   const year = date.getFullYear();
-  //   const month = `${date.getMonth() + 1}`.padStart(2, '0');
-  //   const day = `${date.getDate()}`.padStart(2, '0');
-  //   return `${year}-${month}-${day}`;
-  // };
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -76,7 +67,7 @@ export const SignupView = () => {
         />
       </Form.Group>
 
-      <Form.Group controlId="formBirthday">
+      <Form.Group controlId="formattedBirthday">
         <Form.Label style={{ color: 'white' }}>Birthday</Form.Label>
         <Form.Control
           type="date"

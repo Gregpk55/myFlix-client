@@ -3,8 +3,9 @@ import { json, useParams, Link } from 'react-router-dom';
 import { Card, Col, Form, Button } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 import '../main-view/main-view.scss';
+import moment from 'moment';
 
-export const ProfileView = ({ user, movies, onLoggedOut, updateUser, props }) => {
+export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
   const { movieId } = useParams();
 
@@ -154,7 +155,7 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser, props }) =>
                 <Form.Label style={{ color: 'white' }}>Birthday</Form.Label>
                 <Form.Control
                   type="date"
-                  value={birthday}
+                  value={moment(birthday).format('DD-MM-YYYY')}
                   onChange={(event) => setBirthday(event.target.value)}
                 />
               </Form.Group>
