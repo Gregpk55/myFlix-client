@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { json, useParams, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Card, Col, Form, Button } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 import '../main-view/main-view.scss';
@@ -7,7 +7,7 @@ import moment from 'moment';
 
 export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
-  const { movieId } = useParams();
+  const { movieId } = useParams;
 
   const [username, setUsername] = useState(storedUser.Username);
   const [password, setPassword] = useState('');
@@ -93,6 +93,7 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
       .then((deletedUser) => {
         if (deletedUser) {
           alert(`Successfully deleted ${user.Username}`);
+          //<Navigate to="/signup" />;
         } else {
           alert('Could not delete account');
         }
@@ -120,9 +121,8 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
         <Card>
           <Card.Body>
             <Card.Text>Username: {username}</Card.Text>
-            <Card.Text>
-              Birthday: {birthday.substr(0, 4)}/{birthday.substr(5, 2)}/{birthday.substr(8, 2)}
-            </Card.Text>
+            <Card.Text>Birthday: {moment(birthday).format('YYYY-MM-DD')}</Card.Text>
+
             <Card.Text>Email: {email}</Card.Text>
             <Button onClick={handleEditClick}>Edit</Button>
           </Card.Body>
@@ -186,6 +186,7 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
                 >
                   Delete Account
                 </Link>
+                Delete Account
               </Button>
             </Form>
           </Card.Body>

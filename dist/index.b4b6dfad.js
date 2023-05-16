@@ -27192,7 +27192,7 @@ const MainView = ()=>{
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>response.json()).then((movies)=>{
-            console.log("data, data");
+            console.log("main-view");
             const moviesFromApi = movies.map((movie)=>{
                 return {
                     id: movie._id,
@@ -46883,7 +46883,7 @@ var _s = $RefreshSig$();
 const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
     _s();
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    const { movieId  } = (0, _reactRouterDom.useParams)();
+    const { movieId  } = (0, _reactRouterDom.useParams);
     const [username, setUsername] = (0, _react.useState)(storedUser.Username);
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)(storedUser.Email);
@@ -46972,12 +46972,12 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                     children: "Details"
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 111,
+                    lineNumber: 112,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 107,
+                lineNumber: 108,
                 columnNumber: 7
             }, undefined),
             showDetails && !showEditForm && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
@@ -46990,21 +46990,17 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 122,
+                            lineNumber: 123,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
                             children: [
                                 "Birthday: ",
-                                birthday.substr(0, 4),
-                                "/",
-                                birthday.substr(5, 2),
-                                "/",
-                                birthday.substr(8, 2)
+                                (0, _momentDefault.default)(birthday).format("YYYY-MM-DD")
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 123,
+                            lineNumber: 124,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
@@ -47028,12 +47024,12 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                     ]
                 }, void 0, true, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 121,
+                    lineNumber: 122,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 120,
+                lineNumber: 121,
                 columnNumber: 9
             }, undefined),
             showEditForm && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
@@ -47165,19 +47161,22 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                 variant: "danger",
                                 onClick: deleteAccount,
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                    onClick: onLoggedOut,
-                                    to: "/signup",
-                                    style: {
-                                        color: "white"
-                                    },
-                                    children: "Delete Account"
-                                }, void 0, false, {
-                                    fileName: "src/components/profile-view/profile-view.jsx",
-                                    lineNumber: 182,
-                                    columnNumber: 17
-                                }, undefined)
-                            }, void 0, false, {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                        onClick: onLoggedOut,
+                                        to: "/signup",
+                                        style: {
+                                            color: "white"
+                                        },
+                                        children: "Delete Account"
+                                    }, void 0, false, {
+                                        fileName: "src/components/profile-view/profile-view.jsx",
+                                        lineNumber: 182,
+                                        columnNumber: 17
+                                    }, undefined),
+                                    "Delete Account"
+                                ]
+                            }, void 0, true, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
                                 lineNumber: 178,
                                 columnNumber: 15
@@ -47209,7 +47208,7 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                         children: "Favorite Movies"
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 199,
+                        lineNumber: 200,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -47218,28 +47217,24 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                                 movie: movie
                             }, movie._id, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 202,
+                                lineNumber: 203,
                                 columnNumber: 13
                             }, undefined))
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 200,
+                        lineNumber: 201,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 195,
+                lineNumber: 196,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(ProfileView, "hxzjdjsBzuURnz/bI4sHu2YFgJM=", false, function() {
-    return [
-        (0, _reactRouterDom.useParams)
-    ];
-});
+_s(ProfileView, "zvpsTF8Xx82AlsT37FSjgRDQySI=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");
@@ -47249,7 +47244,7 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","react-bootstrap":"3AD9A","../movie-card/movie-card":"bwuIu","../main-view/main-view.scss":"eBaMl","moment":"jwcsj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eBaMl":[function() {},{}],"jwcsj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-router-dom":"9xmpe","react-bootstrap":"3AD9A","../movie-card/movie-card":"bwuIu","../main-view/main-view.scss":"eBaMl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","moment":"jwcsj"}],"eBaMl":[function() {},{}],"jwcsj":[function(require,module,exports) {
 //! moment.js
 //! version : 2.29.4
 //! authors : Tim Wood, Iskren Chernev, Moment.js contributors
