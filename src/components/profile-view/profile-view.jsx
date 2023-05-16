@@ -155,7 +155,7 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
                 <Form.Label style={{ color: 'white' }}>Birthday</Form.Label>
                 <Form.Control
                   type="date"
-                  value={moment(birthday).format('DD-MM-YYYY')}
+                  value={birthday ? moment(birthday).format('YYYY-MM-DD') : ''}
                   onChange={(event) => setBirthday(event.target.value)}
                 />
               </Form.Group>

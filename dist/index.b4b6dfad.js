@@ -47108,7 +47108,7 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                                         type: "date",
-                                        value: (0, _momentDefault.default)(birthday).format("DD-MM-YYYY"),
+                                        value: birthday ? (0, _momentDefault.default)(birthday).format("YYYY-MM-DD") : "",
                                         onChange: (event)=>setBirthday(event.target.value)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/profile-view.jsx",
