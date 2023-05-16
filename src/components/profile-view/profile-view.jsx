@@ -186,7 +186,6 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
                 >
                   Delete Account
                 </Link>
-                Delete Account
               </Button>
             </Form>
           </Card.Body>

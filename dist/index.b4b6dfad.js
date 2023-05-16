@@ -47161,22 +47161,19 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                 variant: "danger",
                                 onClick: deleteAccount,
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                        onClick: onLoggedOut,
-                                        to: "/signup",
-                                        style: {
-                                            color: "white"
-                                        },
-                                        children: "Delete Account"
-                                    }, void 0, false, {
-                                        fileName: "src/components/profile-view/profile-view.jsx",
-                                        lineNumber: 182,
-                                        columnNumber: 17
-                                    }, undefined),
-                                    "Delete Account"
-                                ]
-                            }, void 0, true, {
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                    onClick: onLoggedOut,
+                                    to: "/signup",
+                                    style: {
+                                        color: "white"
+                                    },
+                                    children: "Delete Account"
+                                }, void 0, false, {
+                                    fileName: "src/components/profile-view/profile-view.jsx",
+                                    lineNumber: 182,
+                                    columnNumber: 17
+                                }, undefined)
+                            }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
                                 lineNumber: 178,
                                 columnNumber: 15
@@ -47208,7 +47205,7 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                         children: "Favorite Movies"
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 200,
+                        lineNumber: 199,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -47217,18 +47214,18 @@ const ProfileView = ({ user , movies , onLoggedOut , updateUser  })=>{
                                 movie: movie
                             }, movie._id, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 203,
+                                lineNumber: 202,
                                 columnNumber: 13
                             }, undefined))
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 201,
+                        lineNumber: 200,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 196,
+                lineNumber: 195,
                 columnNumber: 7
             }, undefined)
         ]
