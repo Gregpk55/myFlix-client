@@ -4,10 +4,11 @@ import { Card, Col, Form, Button } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 import '../main-view/main-view.scss';
 import moment from 'moment';
+import { updateUser } from '../profile-view/update-user';
 
-export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
+export const ProfileView = ({ user, movies, updateUser }) => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
-  const { movieId } = useParams;
+  const { movieId } = useParams();
 
   const [username, setUsername] = useState(storedUser.Username);
   const [password, setPassword] = useState('');
@@ -122,7 +123,6 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
           <Card.Body>
             <Card.Text>Username: {username}</Card.Text>
             <Card.Text>Birthday: {moment(birthday).format('YYYY-MM-DD')}</Card.Text>
-
             <Card.Text>Email: {email}</Card.Text>
             <Button onClick={handleEditClick}>Edit</Button>
           </Card.Body>
@@ -155,20 +155,10 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
                 <Form.Label style={{ color: 'white' }}>Birthday</Form.Label>
                 <Form.Control
                   type="date"
-                  value={birthday ? moment(birthday).format('YYYY-MM-DD') : ''}
+                  value={moment(birthday).format('YYYY-MM-DD')}
                   onChange={(event) => setBirthday(event.target.value)}
                 />
               </Form.Group>
-
-              <Form.Group controlId="formEmail">
-                <Form.Label style={{ color: 'white' }}>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                />
-              </Form.Group>
-
               <Button
                 variant="primary"
                 type="submit"
@@ -180,7 +170,6 @@ export const ProfileView = ({ user, movies, onLoggedOut, updateUser }) => {
                 onClick={deleteAccount}
               >
                 <Link
-                  onClick={onLoggedOut}
                   to="/signup"
                   style={{ color: 'white' }}
                 >

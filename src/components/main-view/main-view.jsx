@@ -18,6 +18,29 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearch] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState(movies);
+
+  const handleSearch = (e) => {
+    const searchQuery = e.target.value;
+    setSearch(searchQuery);
+
+    const filtered = movies.filter((movie) => {
+      const { title, genre, director } = movie;
+      const lowerCaseSearchQuery = searchQuery.toLowerCase();
+      const lowerCaseTitle = title.toLowerCase();
+      const lowerCaseGenre = genre.toLowerCase();
+      const lowerCaseDirector = director.toLowerCase();
+
+      return (
+        lowerCaseTitle.includes(lowerCaseSearchQuery) ||
+        lowerCaseGenre.includes(lowerCaseSearchQuery) ||
+        lowerCaseDirector.includes(lowerCaseSearchQuery)
+      );
+    });
+
+    setFilteredMovies(filtered);
+  };
 
   useEffect(() => {
     if (!token) {
@@ -41,6 +64,7 @@ export const MainView = () => {
         });
 
         setMovies(moviesFromApi);
+        setFilteredMovies(moviesFromApi);
       });
   }, [token]);
 
@@ -137,11 +161,25 @@ export const MainView = () => {
                       to="/login"
                       replace
                     />
-                  ) : movies.length === 0 ? (
+                  ) : filteredMovies.length === 0 ? (
                     <Col>The list is empty!</Col>
                   ) : (
                     <>
-                      {movies.map((movie) => (
+                      <Row>
+                        <Col
+                          className="d-flex justify-content-center"
+                          style={{ marginTop: 10, marginBottom: 20 }}
+                        >
+                          <input
+                            type="text"
+                            className="form-control rounded-pill"
+                            placeholder="Search"
+                            value={searchTerm}
+                            onChange={handleSearch}
+                          ></input>
+                        </Col>
+                      </Row>
+                      {filteredMovies.map((movie) => (
                         <Col
                           className="mb-4"
                           key={movie.id}

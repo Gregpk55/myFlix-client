@@ -31,7 +31,7 @@ export const MovieCard = ({ movie }) => {
           }}
         >
           <div>
-            <Card.Title>Title: {movie.title}</Card.Title>
+            <Card.Title> {movie.title}</Card.Title>
             <Card.Text>Genre: {movie.genre}</Card.Text>
             <Card.Text>Director: {movie.director}</Card.Text>
           </div>
