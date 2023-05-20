@@ -4,7 +4,9 @@ import { Card, Col, Form, Button } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 import '../main-view/main-view.scss';
 import moment from 'moment';
-import { updateUser } from '../profile-view/update-user';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+//import { updateUser } from '../profile-view/update-user';
 
 export const ProfileView = ({ user, movies, updateUser }) => {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -13,7 +15,9 @@ export const ProfileView = ({ user, movies, updateUser }) => {
   const [username, setUsername] = useState(storedUser.Username);
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState(storedUser.Email);
-  const [birthday, setBirthday] = useState(storedUser.Birthday);
+  const [birthday, setBirthday] = useState(moment(storedUser.Birthday).format('YYYY-MM-DD'));
+  const navigate = useNavigate();
+
   const token = localStorage.getItem('token');
   const [showDetails, setShowDetails] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
@@ -80,28 +84,31 @@ export const ProfileView = ({ user, movies, updateUser }) => {
           updateUser(user);
         }
       })
-      .catch((e) => {
-        alert(e);
+      .catch((error) => {
+        alert(`Update failed: ${error.message}`);
       });
   };
 
   const deleteAccount = () => {
-    fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.Username}`, {
-      method: 'DELETE',
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => response.json())
-      .then((deletedUser) => {
-        if (deletedUser) {
-          alert(`Successfully deleted ${user.Username}`);
-          //<Navigate to="/signup" />;
-        } else {
-          alert('Could not delete account');
-        }
+    const confirmed = window.confirm('Are you sure you want to delete your account?');
+    if (confirmed) {
+      fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.Username}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
       })
-      .catch((e) => {
-        alert(e);
-      });
+        .then((response) => response.json())
+        .then((deletedUser) => {
+          if (deletedUser) {
+            alert(`Successfully deleted ${user.Username}`);
+            navigate = '/signup'; // Redirect to signup
+          } else {
+            alert('Could not delete account');
+          }
+        })
+        .catch((e) => {
+          alert(e);
+        });
+    }
   };
 
   return (
@@ -113,6 +120,7 @@ export const ProfileView = ({ user, movies, updateUser }) => {
         <Button
           variant="primary"
           onClick={handleShowDetails}
+          className="ms-auto btn-sm"
         >
           Details
         </Button>
@@ -159,6 +167,7 @@ export const ProfileView = ({ user, movies, updateUser }) => {
                   onChange={(event) => setBirthday(event.target.value)}
                 />
               </Form.Group>
+
               <Button
                 variant="primary"
                 type="submit"
@@ -189,7 +198,7 @@ export const ProfileView = ({ user, movies, updateUser }) => {
         <div className="movie-list">
           {getFavoriteMovies().map((movie) => (
             <MovieCard
-              key={movie._id}
+              key={movie.id}
               movie={movie}
             />
           ))}

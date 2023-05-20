@@ -1,9 +1,8 @@
 import React from 'react';
-
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-function updateUser({ user, handleSubmit, handleUpdate }) {
+function UpdateUser({ user, handleSubmit, handleUpdate }) {
   return (
     <Form
       className="profile-form"
@@ -14,8 +13,8 @@ function updateUser({ user, handleSubmit, handleUpdate }) {
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type="text"
-          name="username"
-          defaultValue={user.Username}
+          name="Username"
+          value={user.Username}
           onChange={handleUpdate}
         />
       </Form.Group>
@@ -23,8 +22,8 @@ function updateUser({ user, handleSubmit, handleUpdate }) {
         <Form.Label>Password:</Form.Label>
         <Form.Control
           type="password"
-          name="password"
-          defaultValue={user.Password}
+          name="Password"
+          value={user.Password}
           onChange={handleUpdate}
         />
       </Form.Group>
@@ -32,9 +31,9 @@ function updateUser({ user, handleSubmit, handleUpdate }) {
         <Form.Label>Email:</Form.Label>
         <Form.Control
           type="email"
-          name="email"
-          defaultValue={user.Email}
-          onChange={(e) => handleUpdate(e.target.value)}
+          name="Email"
+          value={user.Email}
+          onChange={handleUpdate}
         />
       </Form.Group>
       <Button
@@ -47,4 +46,4 @@ function updateUser({ user, handleSubmit, handleUpdate }) {
   );
 }
 
-export default updateUser;
+export default UpdateUser;

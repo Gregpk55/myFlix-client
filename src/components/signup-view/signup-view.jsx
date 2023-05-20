@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export const SignupView = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -27,7 +29,7 @@ export const SignupView = () => {
     }).then((response) => {
       if (response.ok) {
         alert('Signup successful');
-        window.location.reload();
+        navigate = '/login';
       } else {
         alert('Signup failed');
       }
