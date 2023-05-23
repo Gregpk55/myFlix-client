@@ -123,6 +123,10 @@ export const MainView = () => {
                       <ProfileView
                         user={user}
                         movies={movies}
+                        updateUser={(user) => {
+                          setUser(user);
+                          localStorage.setItem('user', JSON.stringify(user));
+                        }}
                       />
                     </Col>
                   )}

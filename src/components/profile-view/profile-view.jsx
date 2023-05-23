@@ -55,11 +55,11 @@ export const ProfileView = ({ user, movies, updateUser }) => {
     event.preventDefault();
 
     const data = {
-      username,
-      password,
-      email,
-      birthday,
-      favoriteMovies: favoriteMovieIds,
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday,
+      //favoriteMovies: favoriteMovieIds,
     };
 
     fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.Username}`, {
@@ -141,6 +141,14 @@ export const ProfileView = ({ user, movies, updateUser }) => {
         <Card>
           <Card.Body>
             <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="formEmail">
+                <Form.Label style={{ color: 'white' }}>Email</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                />
+              </Form.Group>
               <Form.Group controlId="formUsername">
                 <Form.Label style={{ color: 'white' }}>Username</Form.Label>
                 <Form.Control
