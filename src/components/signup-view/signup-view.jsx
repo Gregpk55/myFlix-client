@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { Form, Button } from 'react-bootstrap';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export const SignupView = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -27,16 +29,17 @@ export const SignupView = () => {
     }).then((response) => {
       if (response.ok) {
         alert('Signup successful');
-        window.location.reload();
+        navigate = '/login';
       } else {
         alert('Signup failed');
       }
     });
   };
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="forUsername">
-        <Form.Label>Username</Form.Label>
+        <Form.Label style={{ color: 'white' }}>Username</Form.Label>
         <Form.Control
           type="text"
           value={username}
@@ -47,7 +50,7 @@ export const SignupView = () => {
       </Form.Group>
 
       <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
+        <Form.Label style={{ color: 'white' }}>Password</Form.Label>
         <Form.Control
           type="password"
           value={password}
@@ -57,7 +60,7 @@ export const SignupView = () => {
       </Form.Group>
 
       <Form.Group controlId="formEmail">
-        <Form.Label>Email:</Form.Label>
+        <Form.Label style={{ color: 'white' }}>Email</Form.Label>
         <Form.Control
           type="email"
           value={email}
@@ -66,16 +69,21 @@ export const SignupView = () => {
         />
       </Form.Group>
 
-      <Form.Group controlId="formBirthday">
-        <Form.Label>Birthday:</Form.Label>
+      <Form.Group controlId="formattedBirthday">
+        <Form.Label style={{ color: 'white' }}>Birthday</Form.Label>
         <Form.Control
           type="date"
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
-          required
         />
       </Form.Group>
-      <button type="submit">Submit</button>
+      <Button
+        variant="primary"
+        type="submit"
+        style={{ margin: '5px' }}
+      >
+        Sign Up
+      </Button>
     </Form>
   );
 };
