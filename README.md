@@ -18,3 +18,5 @@ The frontend of the project "myFlix". Allowing users to browse a catalog of movi
 <img width="1166" alt="myFlix:SS" src="https://github.com/Gregpk55/myFlix-client/assets/122652405/d5f6a5c9-535e-44a1-8969-7eb87b70c39a">
 
 https://gregk-myflix.netlify.app
+
+https://github.com/Gregpk55/myFlix-client
