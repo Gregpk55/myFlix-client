@@ -9,7 +9,7 @@ The front-end of the project "myFlix". Allowing users to browse a catalog of mov
 * Parcel
 * React
 * React-router
-* Bootsrtap
+* Bootstrap
 * SCSS
 * HTML
 * JavaScript
