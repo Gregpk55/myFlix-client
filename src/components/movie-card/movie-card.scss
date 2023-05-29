@@ -2,13 +2,14 @@
   background: linear-gradient(to bottom, #707070, #1a1a66, #000000);
   color: white;
   text-decoration: none;
+  border-radius: 0%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 100%;
-  margin: 0;
+  overflow: hidden;
 }
 
 .card-body button {
@@ -30,6 +31,8 @@
 .card {
   transition: all 0.3s ease;
   padding: 0;
+  border-radius: 0%;
+  overflow: hidden;
 }
 
 .card:hover {

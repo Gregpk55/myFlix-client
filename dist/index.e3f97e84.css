@@ -3,12 +3,13 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(#707070, #1a1a66, #000);
+  border-radius: 0%;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 0;
   text-decoration: none;
   display: flex;
+  overflow: hidden;
 }
 
 .card-body button {
@@ -27,8 +28,10 @@
 }
 
 .card {
+  border-radius: 0%;
   padding: 0;
   transition: all .3s;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -39,29 +42,41 @@
 .card-body {
   color: #fff;
   width: 100%;
-  height: 50%;
+  height: 100%;
   background: linear-gradient(#707070, #1a1a66, #000);
+  border-radius: 0%;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 0;
+  font-size: 20px;
   text-decoration: none;
   display: flex;
+  overflow: hidden;
 }
 
 .card-body button {
-  width: 100px;
+  width: 150px;
   cursor: pointer;
   text-align: center;
   opacity: .7;
   align-self: center;
+  margin: 20px 10px;
 }
 
 .card-title, .card-text {
   color: #fff;
-  max-height: 150px;
+  max-height: 200px;
+  border-radius: 10px;
+  padding: 10px;
   text-decoration: none;
   overflow: auto;
+}
+
+.movie-image {
+  max-width: 300px;
+  max-height: 400px;
+  object-fit: cover;
+  flex: 10 10 auto;
 }
 
 body {

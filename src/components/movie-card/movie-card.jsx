@@ -19,15 +19,18 @@ export const MovieCard = ({ movie }) => {
             display: 'block',
             margin: 'auto',
             flex: 1,
+            borderRadius: '0',
           }}
         />
 
         <Card.Body
           style={{
+            borderRadius: '10',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             flex: 1,
+            overflow: 'hidden',
           }}
         >
           <div>
