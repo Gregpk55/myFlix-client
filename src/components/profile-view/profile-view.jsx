@@ -59,7 +59,6 @@ export const ProfileView = ({ user, movies, updateUser }) => {
       Password: password,
       Email: email,
       Birthday: birthday,
-      //favoriteMovies: favoriteMovieIds,
     };
 
     fetch(`https://greg-kennedy-myflix.herokuapp.com/users/${user.Username}`, {

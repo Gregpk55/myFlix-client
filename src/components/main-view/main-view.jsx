@@ -165,8 +165,6 @@ export const MainView = () => {
                       to="/login"
                       replace
                     />
-                  ) : filteredMovies.length === 0 ? (
-                    <Col>The list is empty!</Col>
                   ) : (
                     <>
                       <Row>
@@ -183,15 +181,21 @@ export const MainView = () => {
                           ></input>
                         </Col>
                       </Row>
-                      {filteredMovies.map((movie) => (
-                        <Col
-                          className="mb-4"
-                          key={movie.id}
-                          md={3}
-                        >
-                          <MovieCard movie={movie} />
-                        </Col>
-                      ))}
+                      {filteredMovies.length === 0 ? (
+                        <Col>The list is empty!</Col>
+                      ) : (
+                        <>
+                          {filteredMovies.map((movie) => (
+                            <Col
+                              className="mb-4"
+                              key={movie.id}
+                              md={3}
+                            >
+                              <MovieCard movie={movie} />
+                            </Col>
+                          ))}
+                        </>
+                      )}
                     </>
                   )}
                 </>
